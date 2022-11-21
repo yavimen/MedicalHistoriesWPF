@@ -1,0 +1,103 @@
+﻿<Window x:Class="MedicalHistories.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Converter="clr-namespace:MedicalHistories"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280">
+    <Window.Resources>
+        <Converter:ImagePathConverter x:Key="my:ImagePathConverter"/>
+    </Window.Resources>
+    <Grid x:Name="MyGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="203*"/>
+            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="297*"/>
+            <ColumnDefinition Width="228*"/>
+            <ColumnDefinition Width="224*"/>
+            <ColumnDefinition Width="45*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="309*"/>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="46*"/>
+        </Grid.RowDefinitions>
+        <DataGrid IsReadOnly="True"
+            Name="PatientInfo" AutoGenerateColumns="False" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="3"
+            ItemsSource="{Binding Path=MedicalHistories}" Margin="0,35,0,0" FontFamily="Bahnschrift SemiBold" FontSize="16"
+            SelectedItem="{Binding Path=SelectedPatient, Mode=TwoWay}"  >
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell" >
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF1DC31D"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="82*" Header="Patient Full Name" Binding="{Binding Path = PatientFullName, Mode=TwoWay}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="78*" Header="Patient Contacts" Binding="{Binding Path = PatientContacts, Mode=TwoWay}"/>
+                <DataGridTextColumn Width="78*" Header="Patient Birthdate" Binding="{Binding Path = Birthdate, Mode=TwoWay}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="78*" Header="Patient Diagnosis" Binding="{Binding Path = Diagnosis, Mode=TwoWay}"/>
+                <DataGridTextColumn Width="78*" Header="Department" Binding="{Binding Path = Department, Mode=TwoWay}"/>
+                <DataGridTextColumn Width="78*" Header="Doctor Full Name" Binding="{Binding Path = DoctorFullName, Mode=TwoWay}"/>
+                <DataGridTextColumn Width="78*" Header="Doctor Position" Binding="{Binding Path = DoctorPosition, Mode=TwoWay}"/>
+                <DataGridTextColumn Width="78*" Header="Treatment" Binding="{Binding Path = Treatment, Mode=TwoWay}"/>
+                <DataGridTemplateColumn Header="Status" Width="48*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="48" Height="48" 
+                                   Source="{Binding Status, Converter={StaticResource my:ImagePathConverter}}">
+                            </Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="AddNewPatient" Grid.Column="2" Content="Add New" HorizontalAlignment="Center" Foreground="White" 
+                Grid.Row="4" VerticalAlignment="Center" FontSize="20" Height="50" Width="200" Background="#FF1DC31D" 
+                FontWeight="Bold" FontFamily="Bahnschrift SemiBold" Click="AddNewPatient_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="DischargePatient" Grid.Column="4" Content="Discharge Selected" HorizontalAlignment="Center" Foreground="White" 
+                Grid.Row="4" VerticalAlignment="Center" FontSize="20" Height="50" Width="200" Background="#FF1DC31D" 
+                FontWeight="Bold" FontFamily="Bahnschrift SemiBold" Command="{Binding Path=DischargePatientCommand}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="DeletePatient" Grid.Column="3" Content="Delete Selected" HorizontalAlignment="Center" Foreground="White" 
+                Grid.Row="4" VerticalAlignment="Center" FontSize="20" Height="50" Width="200" Background="#FF1DC31D" 
+                FontWeight="Bold" FontFamily="Bahnschrift SemiBold" Command="{Binding Path=DeletePatientCommand}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>

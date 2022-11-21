@@ -1,0 +1,82 @@
+﻿<Window x:Class="MedicalHistories.View.AddingHistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedicalHistories.View"
+        mc:Ignorable="d"
+        Title="AddingHistoryWindow" Height="450" Width="800">
+    <Grid>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="310.757"/>
+            <ColumnDefinition Width="246*"/>
+            <ColumnDefinition Width="96*"/>
+            <ColumnDefinition Width="220*"/>
+            <ColumnDefinition Width="308*"/>
+            <ColumnDefinition Width="45*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="PatNamText" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                  VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                  Text="{Binding Path=NewPatient.PatientFullName, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="PatConText" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                  VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                  Text="{Binding Path=NewPatient.PatientContacts, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="PatBirText" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                    VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                  Text="{Binding Path=NewPatient.Birthdate, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="PatDiaText" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                    VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                    Text="{Binding Path=NewPatient.Diagnosis, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="PatTreText" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                   VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                    Text="{Binding Path=NewPatient.Treatment, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="PatDepText" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                    VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                    Text="{Binding Path=NewPatient.Department, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="DocNamText" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                    VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                    Text="{Binding Path=NewPatient.DoctorFullName, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <TextBox x:Name="DocPosText" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="4" HorizontalAlignment="Stretch"  TextWrapping="Wrap" 
+                    VerticalAlignment="Center"  Height="40" FontFamily="Ebrima" FontSize="22" Background="#FFE2E2E2"
+                    Text="{Binding Path=NewPatient.DoctorPosition, Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"
+                FontFamily="Ebrima" FontSize="22" Content="Patient Full Name" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"
+                FontFamily="Ebrima" FontSize="22" Content="Patient Contacts" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"
+                FontFamily="Ebrima" FontSize="22" Content="Birthdate" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"
+                FontFamily="Ebrima" FontSize="22" Content="Diagnosis" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5"
+                FontFamily="Ebrima" FontSize="22" Content="Treatment" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="6"
+                FontFamily="Ebrima" FontSize="22" Content="Department" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7"
+                FontFamily="Ebrima" FontSize="22" Content="Doctor Full Name" HorizontalContentAlignment="Center"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="8"
+                FontFamily="Ebrima" FontSize="22" Content="Doctor Position" HorizontalContentAlignment="Center"/>
+        <Button Name="DischargePatient" Grid.Column="5" Content="Add Patient" HorizontalAlignment="Center" Foreground="White" 
+                Grid.Row="9" VerticalAlignment="Center" FontSize="20" Height="50" Width="200" Background="#FF1DC31D" 
+                FontFamily="Ebrima" Command="{Binding Path=AddNewPatientCommand}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>
